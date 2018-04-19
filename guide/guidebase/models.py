@@ -15,5 +15,6 @@ class Place(models.Model):
     avg_visit_time = models.DurationField()
     prices = models.CharField(max_length=100)
     age_rules = models.CharField(max_length=20)
+    about = models.CharField(max_length=1000, default='nothing here')
     pub_date = models.DateTimeField('date published')
 
