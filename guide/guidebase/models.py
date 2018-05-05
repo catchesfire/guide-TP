@@ -12,7 +12,7 @@ class TypeOfPlace(models.Model):
 
 class Place(models.Model):
     name = models.CharField(max_length=100)
-    type = models.ForeignKey('TypeOfPlace', on_delete=models.CASCADE,)
+    type = models.ForeignKey('TypeOfPlace', on_delete=models.CASCADE)
     location = models.CharField(max_length=100)
     open_hours = models.CharField(max_length=100)
     avg_visit_time = models.DurationField()
