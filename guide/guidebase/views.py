@@ -11,7 +11,6 @@ def index(request):
     template = loader.get_template('guidebase/index.html')
     context = {
         'all_places' : all_places,
-        'x' : Place.objects.count(),
     }
     return HttpResponse(template.render(context, request))
 # Create your views here.
