@@ -6,11 +6,14 @@ from .models import TypeOfPlace
 class IndexView(generic.ListView):
     template_name = 'guidebase/index.html'
     context_object_name = 'recent_attraction'
+
     def get_queryset(self):
         return Place.objects.all().last()
 
+
 class ListView(generic.ListView):
     template_name = 'guidebase/attractionlist.html'
+    context_object_name = 'places'
 
     def get_queryset(self):
         return Place.objects.all()

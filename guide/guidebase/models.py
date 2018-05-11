@@ -13,6 +13,8 @@ class Place(models.Model):
     name = models.CharField(max_length=100)
     type = models.ForeignKey('TypeOfPlace', on_delete=models.CASCADE)
     location = models.CharField(max_length=100)
+    gps_x = models.DecimalField(max_digits=10, decimal_places=7, default=0.00)
+    gps_y = models.DecimalField(max_digits=10, decimal_places=7, default=0.00)
     open_hours = models.CharField(max_length=100)
     avg_visit_time = models.DurationField()
     prices = models.CharField(max_length=100)

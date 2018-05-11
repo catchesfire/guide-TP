@@ -3,21 +3,31 @@
 {% block pageContent %}
 <div class="container" style="margin-top:30px">
   <div class="row">
-    <div class="col-sm-4">
-      <h2>Mapa atrakcji</h2>
-      <h5>Zobacz ciekawe miejsca na mapie</h5>
-      <div class="fakeimg">tu bedzie mapa gugla</div>
-      <h4>CHUJESOS</h4>
-      <p>"Traveler XD" to serwis z ciekawymi atrakcjami z Twojej okolicy. Przeglądaj je, dodawaj do tras, ruszaj w świat!</p>
-      <hr class="d-sm-none">
+    {% for place in places %}
+    <div class="col">
+      <div class="card h-100">
+          <div class="card-header h-100">
+            <h4 >{{ place }}</h4>
+          </div>
+        <div style="height:200px">
+          <img class="card-img-top photoDetail" src="{{place.img.url}}" alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <p class="card-text"><b> Opis: </b> {{place.about }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">><b> Typ: </b> {{place.type }}</li>
+          <li class="list-group-item">><b> Lokalizacja: </b> {{place.location }}</li>
+          <li class="list-group-item">><b> Godziny otwarcia: </b> {{place.open_hours }}</li>
+        </ul>
+        <div class="card-body">
+          <a href="list/{{place.id}}" class="card-link">Więcej...</a>
+          <a href="#" class="card-link">Dodaj do planu podróży</a>
+        </div>
     </div>
-    <div class="col-sm-8">
-      <h2>Najnowsze atrakcje</h2>
-      <h5>Zobacz co przygotowaliśmy</h5>
-      <div class="fakeimg">Fake Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <br>
-  </div>
+    </div>
+  {% endfor %}
 </div>
 {% endblock %}
+
+    div.container>div.row>div.column
