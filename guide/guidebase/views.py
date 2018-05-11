@@ -1,21 +1,21 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.db import models
+from django.views import generic
 from .models import Place
-from django.template import loader
+from .models import TypeOfPlace
 
 
-def index(request):
-    all_places = Place.objects.all()
+class IndexView(generic.ListView):
+    template_name = 'guidebase/index.html'
+    context_object_name = 'recent_attraction'
+    def get_queryset(self):
+        return Place.objects.all().last()
 
-    template = loader.get_template('guidebase/index.html')
-    context = {
-        'all_places' : all_places,
-    }
-    return HttpResponse(template.render(context, request))
-# Create your views here.
+class ListView(generic.ListView):
+    template_name = 'guidebase/attractionlist.html'
+
+    def get_queryset(self):
+        return Place.objects.all()
 
 
-def detail(request, place_id):
-    return HttpResponse("<h2>Szczegóły dla " + str(place_id) + "</h2>")
-    # template = loader.get_template('guidebase/index.html')
+class DetailIView(generic.DetailView):
+    model = Place
+    template_name = 'guidebase/detail.html'

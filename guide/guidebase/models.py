@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 
 
@@ -19,7 +18,8 @@ class Place(models.Model):
     prices = models.CharField(max_length=100)
     age_rules = models.CharField(max_length=20)
     about = models.CharField(max_length=1000, default='nothing here')
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField(auto_now_add=True)
+    img = models.ImageField(upload_to="uploads/")
 
     def __str__(self):
         return self.name
