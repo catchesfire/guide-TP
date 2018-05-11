@@ -18,4 +18,7 @@ class ListView(generic.ListView):
 
 class DetailIView(generic.DetailView):
     model = Place
-    template_name = 'guidebase/detail.html'
+    template_name = 'guidebase/details.html'
+    context_object_name = 'attraction_object'
+
+

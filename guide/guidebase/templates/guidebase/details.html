@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block pageContent %}
+<div class="container" style="margin-top:30px">
+  <div class="row">
+      <div class="card" style="width:100%">
+        <div class="card-header">
+          <h3>{{ attraction_object }}</h3>
+        </div>
+      <div style="height:300px">
+          <img class="card-img-top photoDetail" src="{{attraction_object.img.url}}" alt="Card image cap">
+      </div>
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item">><b> Typ: </b> {{attraction_object.type }}</li>
+          <li class="list-group-item">><b> Lokalizacja: </b> {{attraction_object.location }}</li>
+          <li class="list-group-item">><b> Godziny otwarcia: </b> {{attraction_object.open_hours }}</li>
+          <li class="list-group-item">><b> Przeciętny czas wizyty: </b> {{attraction_object.avg_visit_time}}</li>
+          <li class="list-group-item">><b> Koszt wejścia: </b> {{attraction_object.prices}}</li>
+          <li class="list-group-item">><b> Restrykcje wiekowe: </b> {{attraction_object.age_rules}}</li>
+      </ul>
+      <div class="card-body">
+          <p class="card-text"><b> Opis: </b> {{attraction_object.about }}</p>
+  </div>
+          <p>Opublikowano {{attraction_object.pub_date }}</p>
+    </div>
+</div>
+{% endblock %}

@@ -4,6 +4,27 @@
 <div class="container" style="margin-top:30px">
   <div class="row">
     <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header">
+          <h3>Niedawno dodane</h3>
+        </div>
+      <img class="card-img-top photoRecent" src="{{recent_attraction.img.url}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ recent_attraction }}</h5>
+        <p class="card-text"><b> Opis: </b> {{recent_attraction.about }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">><b> Typ: </b> {{recent_attraction.type }}</li>
+        <li class="list-group-item">><b> Lokalizacja: </b> {{recent_attraction.location }}</li>
+        <li class="list-group-item">><b> Godziny otwarcia: </b> {{recent_attraction.open_hours }}</li>
+      </ul>
+      <div class="card-body">
+        <a href="list/{{recent_attraction.id}}" class="card-link">Więcej...</a>
+        <a href="#" class="card-link">Dodaj do planu podróży</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm-8">
       <h2>Mapa atrakcji</h2>
       <h5>Zobacz ciekawe miejsca na mapie</h5>
       <div class="fakeimg">
@@ -12,27 +33,6 @@
       <h4>Co to za strona?</h4>
       <p style="text-align: justify">"Traveler XD" to serwis ze spisem przeróżnych atrakcji turystycznych w Twojej okolicy. Przeglądaj je, dodawaj do własnoręcznie tworzonych tras oraz ruszaj w świat w poszukiwaniu przygód!!</p>
       <hr class="d-sm-none">
-    </div>
-    <div class="col-sm-8">
-      <div class="card">
-        <div class="card-header">
-          <h3>Niedawno dodane</h3>
-        </div>
-      <img class="card-img-top photoRecent" src="{{recent_attraction.img.url}}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">{{ recent_attraction }}</h5>
-        <p class="card-text"><b> Typ miejsca: </b> {{recent_attraction.about }}</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">><b> Typ miejsca: </b> {{recent_attraction.type }}</li>
-        <li class="list-group-item">><b> Lokalizacja: </b> {{recent_attraction.location }}</li>
-        <li class="list-group-item">><b> Godziny otwarcia: </b> {{recent_attraction.open_hours }}</li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Zobacz więcej szczegółów</a>
-        <a href="#" class="card-link">Coś ???</a>
-      </div>
-    </div>
   </div>
 </div>
 {% endblock %}
