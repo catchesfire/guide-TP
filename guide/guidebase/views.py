@@ -62,9 +62,7 @@ class RegisterView(View):
     def post(self, request):
         user_form = self.user_form_class(request.POST)
         if user_form.is_valid():
-            #sprawdz haslo1=haslo2
             user = user_form.save(commit=False)
-
             username = user_form.cleaned_data['username']
             password = user_form.cleaned_data['password']
             confirm_password = user_form.cleaned_data['confirm_password']
