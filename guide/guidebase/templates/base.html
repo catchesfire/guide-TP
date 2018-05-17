@@ -40,11 +40,24 @@
       <li class="nav-item">
         <a class="nav-link" href="#">O nas</a>
       </li>
-        <li class="nav-item" >
-        <a class="nav-link" style="float: right;" href="#">Zaloguj się</a>
-      </li>
     </ul>
   </div>
+    <div class="float-right">
+          <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                     <a class="nav-link" href="#" style="color:white">Witaj {{ user.get_username }}</a>
+                </li>
+                <li class="nav-item">
+                     <a class="nav-link" href="{{PROJ_ROOT}}/guidebase/logout">Wyloguj</a>
+                </li>
+                {% else %}
+                    <li class="nav-item">
+                     <a class="nav-link" href="{{PROJ_ROOT}}/guidebase/login">Zaloguj</a>
+                </li>
+            {% endif %}
+          </ul>
+      </div>
 </nav>
 
 {% block pageContent %}

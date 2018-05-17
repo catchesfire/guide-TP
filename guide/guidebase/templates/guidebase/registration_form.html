@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block pageContent %}
+<div class="container" style="margin-top:30px">
+  <div class = "row">
+      <div class="col-sm-12 col-md-7">
+	    <div class="panel-body">
+		  <h3>Zarejestruj się</h3>
+		  {$ if error_message %}
+		  	<p><strong>{{ error_message }}</strong></p>
+		  {% endif %}
+
+		  <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			{% include 'guidebase/form-template.html' %}
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+				  <button type="submit" class="btn btn-success">Submit</button>
+			    </div>
+			</div>
+		  </form>
+	    </div>
+	</div>
+  </div>
+</div>
+{% endblock %}
