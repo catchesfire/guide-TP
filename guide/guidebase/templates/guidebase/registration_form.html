@@ -6,19 +6,34 @@
       <div class="col-sm-12 col-md-7">
 	    <div class="panel-body">
 		  <h3>Zarejestruj się</h3>
-		  {$ if error_message %}
+		  {% if error_message %}
 		  	<p><strong>{{ error_message }}</strong></p>
 		  {% endif %}
 
 		  <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 			{% csrf_token %}
-			{% include 'guidebase/form-template.html' %}
+			<div class="form-group">
+			    <label for="usr">Nazwa użytkownika:</label>
+			    <input type="text" class="form-control" id="usr" name="username">
+			</div>
+			<div class="form-group">
+			  <label for="mail">Email:</label>
+			  <input type="text" class="form-control" id="mail" name="email">
+			</div>
+			<div class="form-group">
+			  <label for="pwd">Hasło:</label>
+			  <input type="password" class="form-control" id="pwd" name="password">
+			</div>
+			<div class="form-group">
+			  <label for="pwd2">Powtórz hasło:</label>
+			  <input type="password" class="form-control" id="pwd2" name="password">
+			</div>
 			<div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
-				  <button type="submit" class="btn btn-success">Submit</button>
+				  <button type="submit" class="btn btn-success">Zatwierdź</button>
 			    </div>
 			</div>
-		  </form>
+	    	</form>
 	    </div>
 	</div>
   </div>

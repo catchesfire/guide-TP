@@ -50,3 +50,11 @@ def logoutUser(request):
     return redirect('index')
 
 
+class RegisterView(View):
+    template_name = 'guidebase/registration_form.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+
+
