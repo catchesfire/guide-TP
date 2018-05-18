@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block pageContent %}
+
 <div class="container" style="margin-top:30px">
   <div class="row">
     <div class="col-sm-4">
@@ -27,8 +28,23 @@
     <div class="col-sm-8">
       <h2>Mapa atrakcji</h2>
       <h5>Zobacz ciekawe miejsca na mapie</h5>
-      <div class="fakeimg">
-        tu bedzie mapa gugla
+      <div class="fakeimg" id="map">
+        <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+        <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGUhbbCF-AGxGyqU0rh-Vt0O7Nckzi3Xk&callback=initMap">
+    </script>
       </div>
       <h4>Co to za strona?</h4>
       <p style="text-align: justify">"Traveler XD" to serwis ze spisem przeróżnych atrakcji turystycznych w Twojej okolicy. Przeglądaj je, dodawaj do własnoręcznie tworzonych tras oraz ruszaj w świat w poszukiwaniu przygód!!</p>
