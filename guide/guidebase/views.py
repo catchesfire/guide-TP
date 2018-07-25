@@ -11,7 +11,8 @@ class IndexView(generic.ListView):
     context_object_name = 'recent_attraction'
 
     def get_queryset(self):
-        return Place.objects.all().last()
+        return Place.objects.all()
+
 
 
 class ListView(generic.ListView):

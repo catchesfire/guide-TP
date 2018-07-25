@@ -8,18 +8,18 @@
         <div class="card-header">
           <h3>Niedawno dodane</h3>
         </div>
-      <img class="card-img-top photoRecent" src="{{recent_attraction.img.url}}" alt="Card image cap">
+      <img class="card-img-top photoRecent" src="{{recent_attraction.last.img.url}}" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">{{ recent_attraction }}</h5>
-        <p class="card-text"><b> Opis: </b> {{recent_attraction.about }}</p>
+        <h5 class="card-title">{{ recent_attraction.last }}</h5>
+        <p class="card-text"><b> Opis: </b> {{recent_attraction.last.about }}</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">><b> Typ: </b> {{recent_attraction.type }}</li>
-        <li class="list-group-item">><b> Lokalizacja: </b> {{recent_attraction.location }}</li>
-        <li class="list-group-item">><b> Godziny otwarcia: </b> {{recent_attraction.open_hours }}</li>
+        <li class="list-group-item">><b> Typ: </b> {{recent_attraction.last.type }}</li>
+        <li class="list-group-item">><b> Lokalizacja: </b> {{recent_attraction.last.location }}</li>
+        <li class="list-group-item">><b> Godziny otwarcia: </b> {{recent_attraction.last.open_hours }}</li>
       </ul>
       <div class="card-body">
-        <a href="list/{{recent_attraction.id}}" class="card-link">Więcej...</a>
+        <a href="list/{{recent_attraction.last.id}}" class="card-link">Więcej...</a>
         <a href="#" class="card-link">Dodaj do planu podróży</a>
       </div>
     </div>
@@ -27,10 +27,27 @@
     <div class="col-sm-8">
       <h2>Mapa atrakcji</h2>
       <h5>Zobacz ciekawe miejsca na mapie</h5>
-      <div class="fakeimg">
-        tu bedzie mapa gugla
-      </div>
+      <div id="map" style="height: 60%"></div>
+        <script>
+          function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 53.132330, lng: 23.159630},
+              zoom: 12
+            });
+            {% for place in recent_attraction %}
+            var latlng = {lat: {{place.gps_x}}, lng: {{place.gps_y}}}
+            var marker = new google.maps.Marker({
+              position: latlng,
+              map: map
+              });
+              {% endfor %}
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIOOtr2iADzkBWq3r48fHiZRvnAFcWxHY&callback=initMap"
+        async defer></script>
+
       <h4>Co to za strona?</h4>
+
       <p style="text-align: justify">"Traveler XD" to serwis ze spisem przeróżnych atrakcji turystycznych w Twojej okolicy. Przeglądaj je, dodawaj do własnoręcznie tworzonych tras oraz ruszaj w świat w poszukiwaniu przygód!!</p>
       <hr class="d-sm-none">
   </div>
