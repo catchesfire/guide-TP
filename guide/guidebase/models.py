@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 
@@ -22,6 +24,15 @@ class Place(models.Model):
     about = models.CharField(max_length=1000, default='nothing here')
     pub_date = models.DateTimeField(auto_now_add=True)
     img = models.ImageField(upload_to="uploads/")
+
+    def __str__(self):
+        return self.name
+
+
+class Route(models.Model):
+    owner = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    attractions = models.ManyToManyField(Place, related_name='attractions')
 
     def __str__(self):
         return self.name

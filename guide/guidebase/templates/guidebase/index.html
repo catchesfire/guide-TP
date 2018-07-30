@@ -34,13 +34,46 @@
               center: {lat: 53.132330, lng: 23.159630},
               zoom: 12
             });
-            {% for place in recent_attraction %}
-            var latlng = {lat: {{place.gps_x}}, lng: {{place.gps_y}}}
-            var marker = new google.maps.Marker({
+
+            var stuff = [
+            {% for place in recent_attraction%}
+            ["{{place.name}}","{{place.img.url}}","{{place.type}}","{{place.open_hours}}",{{place.gps_x}},{{place.gps_y}},{{place.id}}],
+            {% endfor %}
+            ];
+
+            var contentStrings = [];
+            var infowindow = new google.maps.InfoWindow();
+            var markers = [];
+            var counter = -1;
+
+            {% for place in recent_attraction%}
+            counter = counter + 1;
+
+            contentStrings[counter] = '<div id="container">'
+              + '<h5>' + stuff[counter][0] + '</h5>'
+              + '<center><img src=' + stuff[counter][1] +' alt="" height=200px/></center><br/>'
+              + '<b>Typ:</b>' + stuff[counter][2] + '<br/>'
+              + '<b>Godziny otwarcia:</b>' + stuff[counter][3] + '<br/>'
+              + '<a href="list/' + stuff[counter][6] + '">Więcej...<a/><br/>'
+              + '<a href=#>Dodaj do planu podróży<a/>'
+              + '</div>';
+
+            var latlng = {lat: stuff[counter][4], lng: stuff[counter][5]}
+
+            markers[counter] = new google.maps.Marker({
               position: latlng,
               map: map
-              });
+            });
+
+             google.maps.event.addListener(markers[counter],'click', (function(marker,contentStrings,infowindow){
+              return function() {
+                infowindow.setContent(contentStrings);
+                infowindow.setOptions({maxWidth: 400});
+                infowindow.open(map,marker);
+              };
+            })(markers[counter],contentStrings[counter],infowindow));
               {% endfor %}
+
             }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIOOtr2iADzkBWq3r48fHiZRvnAFcWxHY&callback=initMap"
