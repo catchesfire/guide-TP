@@ -9,5 +9,6 @@ urlpatterns = [
     path('list/<int:pk>', views.DetailIView.as_view(), name='place'),
     path('login', views.LoginView.as_view(), name='login'),
     path('logout', views.logoutUser, name='logout'),
-    path('register', views.RegisterView.as_view(), name='register')
+    path('register', views.RegisterView.as_view(), name='register'),
+    path('planner', views.PlannerView.as_view(), name="planner")
 ]

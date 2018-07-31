@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block pageContent %}
+<div class="cointainer" style="margin-top:30px">
+    <b>Wczytaj trase:</b>
+        <select>
+
+        </select>
+        <button>Wczytaj</button><br/>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Atrakcje trasy:</h4>
+                </div>
+                <div name="Lista?!">
+
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">>
+                        <b> Dodaj atrakcję:</b>
+                        <select>
+
+                        </select>
+                        <button>Dodaj</button></li>
+                    <li class="list-group-item">><button>Usun zaznaczone</button></li>
+                  </ul>
+
+        </div>
+        <div class="col-sm-8">
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,8 +3,7 @@ from django.shortcuts import render, redirect
 from .models import Place
 from .models import TypeOfPlace
 from django.contrib.auth import authenticate, login, logout
-from .forms import RegisterForm
-
+from .forms import RegisterForm, PlannerForm
 
 class IndexView(generic.ListView):
     template_name = 'guidebase/index.html'
@@ -79,3 +78,10 @@ class RegisterView(View):
             if user is not None:
                 login(request, user)
                 return redirect('index')
+
+class PlannerView(View):
+    template_name = 'guidebase/planner.html'
+
+    def get(self, request):
+        form = PlannerForm();
+        return render(request, self.template_name, {'form': form})
